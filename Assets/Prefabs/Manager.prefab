@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8919635823312321887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8919635823312321857}
+  - component: {fileID: 8919635823312321886}
+  - component: {fileID: 1423986931783664864}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8919635823312321857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919635823312321887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8919635823312321886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919635823312321887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6f04dc7f332fa4fa63fc3b53b41a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1423986931783664864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919635823312321887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ddb7149208fb24c8a3639b7360334a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundObject: {fileID: 4674059314988508286, guid: 37e9bba10bf92704dbfba8b63a8f25b1, type: 3}
+  walkSound:
+  - {fileID: 8300000, guid: 41d82185f56e5fc4fae20d8bf5abed1a, type: 3}
+  - {fileID: 8300000, guid: 1ce20523ae61088468794da7ee8c2f23, type: 3}
+  - {fileID: 8300000, guid: 380f1927e7a42a044ab6e677b9234a67, type: 3}
+  dashSound:
+  - {fileID: 8300000, guid: 91ec718884841a74b871b83504cdc572, type: 3}
+  coinSound:
+  - {fileID: 8300000, guid: 29300fac3f603c9448bc6365e7d56729, type: 3}
+  keySound:
+  - {fileID: 8300000, guid: 67da75782487cf2408682f3f7b1b614d, type: 3}
+  endKeySound:
+  - {fileID: 8300000, guid: 5713332e4ef0ebd47a5751d80217766e, type: 3}
+  lockDoorSound:
+  - {fileID: 8300000, guid: 5a4ea0648138c8b4aab365de32da63b7, type: 3}
+  unlockDoorSound:
+  - {fileID: 8300000, guid: 0ca0c11a1091aec45b54d4dc8a6191d8, type: 3}
+  enemySound:
+  - {fileID: 8300000, guid: 3624631837b26f040be94ce40ce4ea11, type: 3}
+  buttonPressSound:
+  - {fileID: 8300000, guid: df60bb2d55891854090df8e5c6b3894e, type: 3}
+  canvasPopUpSound:
+  - {fileID: 8300000, guid: 44e0ab49c2e97714685d1bf6da0d09ab, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: b16c058e2b2d7b54f95d456371f27375, type: 3}
+  - {fileID: 8300000, guid: 88f72d4c296576841b72c20f2cc6d27b, type: 3}
+  - {fileID: 8300000, guid: af6b4ea02f4092b4480bf9cd240bd1de, type: 3}
+  - {fileID: 8300000, guid: cbb1f8ceb3045494b8360a1b430dda40, type: 3}
+  bombShootSound:
+  - {fileID: 8300000, guid: e47aa292e5054d14ca8d1e317c698c60, type: 3}
+  explodeSound:
+  - {fileID: 8300000, guid: 26d835012c93d2e4a9b9682b0b3b33b0, type: 3}
+  - {fileID: 8300000, guid: e6bb2a1c6c6fcfd46a31529a3c03900a, type: 3}
+  - {fileID: 8300000, guid: 75f90ff91cc83cc4caef409bf6073a5a, type: 3}
+  itemSound:
+  - {fileID: 8300000, guid: 5d29e570b9a865f48a3b050071531051, type: 3}
+  playerDamageSound:
+  - {fileID: 8300000, guid: 791c0a5ff49c77c4196dc40195aa0c30, type: 3}
+  - {fileID: 8300000, guid: e5e1882e279c874459b50c01de6eff76, type: 3}
+  - {fileID: 8300000, guid: 613cde7457f848642a35c5f0bbb64487, type: 3}
+  - {fileID: 8300000, guid: 00b6b101c8995d24f92b2a544c93a304, type: 3}
+  deadSound:
+  - {fileID: 8300000, guid: 0782202cdc5fb6040825a0e98652f78d, type: 3}
+  hoverSound:
+  - {fileID: 8300000, guid: 9d96eb6dba1c38a4ca75f21e8cdee9db, type: 3}

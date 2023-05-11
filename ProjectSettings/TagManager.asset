@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Wall
+  - Projectile
+  - Coin
+  - MagItem
+  - Door
+  - Upgrade
+  - EndKey
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Wall
+  - Water
+  - UI
+  - Bullet
+  - FloorCollide
+  - Collectables
+  - Enemy
+  - Ghost
+  - Player
+  - Bomb
+  - SpawnerLayer
+  - Door
+  - EnemyBlock
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: GroundTiles
+    uniqueID: 3177638023
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: AboveGround
+    uniqueID: 92216579
+    locked: 0
