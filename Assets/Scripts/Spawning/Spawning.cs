@@ -28,7 +28,7 @@ public class Spawning : MonoBehaviour
         {
             canSpawn = true;
 
-            spawnTime = Random.Range(2, spawnTime);
+            //spawnTime = Random.Range(2, spawnTime);
 
             if (canSpawn)
             {
