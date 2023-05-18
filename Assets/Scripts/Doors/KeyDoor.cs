@@ -38,6 +38,8 @@ public class KeyDoor : LockedDoorScript
 
                 FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.unlockDoor, transform.position, 1f);
 
+                GetComponent<BoxCollider2D>().enabled = false;
+
                 OpenOtherDoor();
             }
             else

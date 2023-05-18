@@ -115,4 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpText: {fileID: 5835487264919756793, guid: 7c49a30731ea3c14b924cb4ada30f1e6, type: 3}
-  fireRateIncreaseAmount: 0.025
+  fireRateIncreaseAmount: 0.015

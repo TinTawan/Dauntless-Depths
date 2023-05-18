@@ -10,7 +10,7 @@ public class SpeedUpgrade : ItemPickUp
     {
         if (col.CompareTag("Player"))
         {
-            player.AddSpeed(speedIncrease, 0.05f);
+            player.AddSpeed(speedIncrease, 0.01f);
             InstantiateText("+ Speed");
 
             base.OnTriggerEnter2D(col);

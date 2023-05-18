@@ -11,11 +11,17 @@ public class IncreaseFireRateItem : ItemPickUp
     {
         if (col.CompareTag("Player"))
         {
-            pShoot.AddFireRate(fireRateIncreaseAmount);
-            InstantiateText("+ Fire Rate");
+            if(FindObjectOfType<PlayerShoot>().GetFireRate() > 0.01)
+            {
+                pShoot.AddFireRate(fireRateIncreaseAmount);
+                InstantiateText("+ Fire Rate");
+            }
+            else
+            {
+                InstantiateText("Max Fire Rate");
+            }
 
             base.OnTriggerEnter2D(col);
-            //Destroy(gameObject);
         }
     }
 

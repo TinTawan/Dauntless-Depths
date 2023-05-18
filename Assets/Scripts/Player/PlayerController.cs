@@ -236,7 +236,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Manager.AddCoins(10);
+            Manager.AddCoins(100);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -249,6 +249,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Manager.AddKills(10);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Manager.AddKeys(1);
         }
     }
     //-------------------------------------------------
