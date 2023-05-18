@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 750
   damage: 0
+  bloodEffect: {fileID: 2873585398711720072, guid: d2fd499af04eb0245b85115c8176aa48, type: 3}
   bombParticle: {fileID: 5681023782527432415, guid: cf46a401b4fa4244a924bcf5452182e3, type: 3}
 --- !u!96 &-2991251432832113049
 TrailRenderer:

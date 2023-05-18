@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D bulletPrefab, bombPrefab;
     [SerializeField] private Pointer mousePointer;
-    [SerializeField] private GameObject shootEffect;
+    [SerializeField] private GameObject shootEffect, casingEffect;
     [SerializeField] private Transform endOfGunPoint;
 
     private Projectile projectile;
@@ -58,6 +58,8 @@ public class PlayerShoot : MonoBehaviour
 
     void ShootBullet()
     {
+        Instantiate(casingEffect, transform.position, transform.rotation);
+
         //intantiate bullet
         Rigidbody2D shot = Instantiate(bulletPrefab, endOfGunPoint.transform.position, transform.rotation);
 

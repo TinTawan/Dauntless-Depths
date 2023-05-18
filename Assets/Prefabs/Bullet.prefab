@@ -141,6 +141,7 @@ MonoBehaviour:
   speed: 1500
   damage: 10
   hitEffect: {fileID: 6287470389017385728, guid: 63f75601d86ef82409d138bf48cd8230, type: 3}
+  bloodEffect: {fileID: 2873585398711720072, guid: d2fd499af04eb0245b85115c8176aa48, type: 3}
 --- !u!96 &3063377936085491144
 TrailRenderer:
   serializedVersion: 2

@@ -21,6 +21,8 @@ public class BulletProjectile : Projectile
             Enemy enemy = col.gameObject.GetComponent<Enemy>();
             enemy.Damage((int)damage);
 
+            Instantiate(bloodEffect, transform.position, Quaternion.identity);
+
         }
 
 

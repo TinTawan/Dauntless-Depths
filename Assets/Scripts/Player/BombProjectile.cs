@@ -21,6 +21,12 @@ public class BombProjectile : Projectile
 
         Instantiate(bombParticle, transform.position, Quaternion.identity);
         Destroy(shot.gameObject, 0.1f);
+
+
+        if (col.CompareTag("Enemy"))
+        {
+            Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        }
     }
 
 }

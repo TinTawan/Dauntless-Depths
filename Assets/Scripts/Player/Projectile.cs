@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] protected float speed = 500f;
     [SerializeField] protected float damage = 10;
+    [SerializeField] protected GameObject bloodEffect;
 
     protected Rigidbody2D shot;
 
