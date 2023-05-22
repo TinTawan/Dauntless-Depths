@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
 
     public static CanvasManager canvas;
 
-    public static bool unlockedBomb, isGamepad;
+    public static bool unlockedBomb, isKBM;
 
 
     private void Awake()

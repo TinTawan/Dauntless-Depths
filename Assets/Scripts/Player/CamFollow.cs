@@ -17,14 +17,8 @@ public class CamFollow : MonoBehaviour
 
 
     //new inputs
-    PlayerInput playerInput;
     bool aimIn = false;
 
-
-    private void Start()
-    {
-        //playerInput = GetComponent<PlayerInput>();
-    }
 
 
     private void Update()

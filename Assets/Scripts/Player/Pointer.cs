@@ -18,14 +18,13 @@ public class Pointer : MonoBehaviour
     [SerializeReference] float contRotateSpeed = 1000f;
 
     private Controls playerControls;
-    private PlayerInput playerInput;
 
     Vector2 aim;
+
 
     private void Awake()
     {
         playerControls = new Controls();
-        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -38,6 +37,9 @@ public class Pointer : MonoBehaviour
         //lock and hide cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+
+       
+        InputSystem.onActionChange += InputActionChangeCallback;
 
         transform.position = Vector3.zero;
     }
@@ -55,20 +57,12 @@ public class Pointer : MonoBehaviour
         }
 
 
-        if(playerInput.currentControlScheme == "Gamepad")
-        {
-            Manager.isGamepad = true;
-        }
-        else
-        {
-            Manager.isGamepad = false;
-        }
     }
 
     void MovePointer()
     {
 
-        if (!Manager.isGamepad)
+        if (Manager.isKBM)
         {
             //get mouse position compared to player
             mousePos = Camera.main.WorldToScreenPoint(player.position);
@@ -86,7 +80,7 @@ public class Pointer : MonoBehaviour
         }
         else
         {
-            
+
             if(Mathf.Abs(aim.x) > contDeadZone || Mathf.Abs(aim.y) > contDeadZone)
             {
                 Vector2 direction = new Vector2(aim.x, aim.y);
@@ -114,5 +108,15 @@ public class Pointer : MonoBehaviour
         playerControls.Disable();
     }
 
+    private void InputActionChangeCallback(object obj, InputActionChange change)
+    {
+        if (change == InputActionChange.ActionPerformed)
+        {
+            InputAction receivedInputAction = (InputAction)obj;
+            InputDevice lastDevice = receivedInputAction.activeControl.device;
 
+            Manager.isKBM = lastDevice.name.Equals("Keyboard") || lastDevice.name.Equals("Mouse");
+
+        }
+    }
 }

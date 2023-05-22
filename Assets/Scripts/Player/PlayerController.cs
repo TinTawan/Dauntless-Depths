@@ -200,34 +200,12 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            //New Input
-            /*rb.velocity = moveInput * moveSpeed;
-
-            if(moveInput != Vector2.zero)
-            {
-                nextStep += Time.deltaTime;
-                if (nextStep >= stepTime)
-                {
-                    FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.walk, transform.position, 1f);
-                    nextStep = 0f;
-                }
-            }*/
             
         }
         
 
     }
 
-    private void FlipPlayer()
-    {
-        //player faces the opposite way and multiply player's local scale by -1 in the x axis
-        faceRight = !faceRight;
-
-        Vector3 flip = transform.localScale;
-        flip.x *= -1;
-        transform.localScale = flip;
-
-    }
 
 
     IEnumerator Dash(Vector2 facing)
