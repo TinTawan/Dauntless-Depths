@@ -39,7 +39,7 @@ public class Pointer : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
 
-        
+        transform.position = Vector3.zero;
     }
 
     private void Update()
