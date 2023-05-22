@@ -20,6 +20,10 @@ public class PlayerShoot : MonoBehaviour
     private float shootTimer, bombTimer;
 
 
+    //new input stuff
+    bool shoot;
+
+
 
     private void Update()
     {
@@ -30,7 +34,7 @@ public class PlayerShoot : MonoBehaviour
             bombTimer += Time.deltaTime;
 
             //shoot when holding the shoot button
-            if (Input.GetKey(shootKey))
+            if (Input.GetKey(shootKey) || shoot)
             {
                 //acts as a fire rate
                 if (shootTimer >= shootDelay)
@@ -54,14 +58,38 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        
+
+        //Allows player to fire while holding the trigger with OnFire()
+        var holdShoot = GetComponent<PlayerInput>().actions["Fire"];
+        if (holdShoot.IsPressed())
+        {
+            shoot = true;
+        }
+        else
+        {
+            shoot = false;
+        }
+
+
     }
 
-    //New Inputs
-    void OnFire()
+    //-----------------------New Inputs-------------
+
+    void OnFire2()
     {
+        if (Manager.unlockedBomb)
+        {
+            if (bombTimer >= bombDelay)
+            {
+                Instantiate(shootEffect, endOfGunPoint.position, transform.rotation);
+                ShootBomb();
 
+                bombTimer = 0f;
+            }
+        }
     }
+
+    //--------------------------------------------------
 
     void ShootBullet()
     {

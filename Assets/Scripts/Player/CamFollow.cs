@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CamFollow : MonoBehaviour
 {
@@ -15,6 +16,17 @@ public class CamFollow : MonoBehaviour
     [SerializeField] private float shakeTime = 1f, shakeAmount = 1f;
 
 
+    //new inputs
+    PlayerInput playerInput;
+    bool aimIn = false;
+
+
+    private void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
+
     private void Update()
     {
         if (Input.GetKey(camChangeKey))
@@ -25,6 +37,17 @@ public class CamFollow : MonoBehaviour
         {
             MoveCam();
 
+        }
+
+
+        var aim = playerInput.actions["Aim"];
+        if (aim.IsPressed())
+        {
+            aimIn = true;
+        }
+        else
+        {
+            aimIn = false;
         }
     }
 
@@ -38,9 +61,8 @@ public class CamFollow : MonoBehaviour
         //Vector3 smoothPos = Vector3.Lerp(transform.position, camPos, moveCamSmoothSpeed * Time.deltaTime);
         transform.position = smoothPos;
 
-
-
     }
+
     void LookCam()
     {
         //allows player to look around them in a bigger area
@@ -48,17 +70,24 @@ public class CamFollow : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, camPos, ref velocity, lookCamSmoothSpeed * Time.deltaTime);
     }
 
+
     //move cam to random position inside a sphere around it over a set time a set number of times
     public IEnumerator BigCamShake()
-    {       
+    {
         float timer = 0f;
 
         //uses while loop and yield return null to run along side delta time
-        while(timer < shakeTime)
+        while (timer < shakeTime)
         {
             timer += Time.deltaTime;
-            Vector3 startPos = transform.position + offset; 
-            transform.position = startPos + Random.insideUnitSphere * shakeAmount;
+            Vector3 startPos = transform.position + offset;
+            //transform.position = startPos + Random.insideUnitSphere * shakeAmount;
+
+            Vector2 shake = Random.insideUnitCircle;
+            Vector3 shake3 = new Vector3(shake.x, shake.y, 0);
+
+            transform.position = startPos + shake3 * shakeAmount;
+
             yield return null;
         }
 
@@ -68,11 +97,15 @@ public class CamFollow : MonoBehaviour
         float timer = 0f;
 
         //uses while loop and yield return null to run along side delta time
-        while (timer < shakeTime/2)
+        while (timer < shakeTime / 2)
         {
             timer += Time.deltaTime;
             Vector3 startPos = transform.position + offset;
-            transform.position = startPos + Random.insideUnitSphere * shakeAmount/2;
+
+            Vector2 shake = Random.insideUnitCircle;
+            Vector3 shake3 = new Vector3(shake.x, shake.y, 0);
+
+            transform.position = startPos + shake3 * shakeAmount/2;
             yield return null;
         }
 

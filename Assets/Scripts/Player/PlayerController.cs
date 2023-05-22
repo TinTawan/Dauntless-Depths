@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         Cheats();
 
+
     }
 
     void MovePlayer()
