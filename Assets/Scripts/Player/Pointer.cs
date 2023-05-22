@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Pointer : MonoBehaviour
 {
@@ -52,6 +53,11 @@ public class Pointer : MonoBehaviour
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 cursorPosOffset = new Vector3(0, 0, 10);
         cursor.transform.position = cursorPos + cursorPosOffset;
+    }
+
+    void OnLook()
+    {
+        MovePointer();
     }
 
 }

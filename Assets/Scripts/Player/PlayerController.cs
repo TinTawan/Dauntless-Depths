@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     float stepTime = 0.3f , nextStep;
 
+    //New input system
+    private Vector2 moveInput;
 
     private void Start()
     {
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
 
         DashInputs();
+        nextDashTimer += Time.deltaTime;
 
         Cheats();
 
@@ -77,10 +81,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //------------NEW INPUT SYSTEM-------------------
+    private void OnMove(InputValue inVal)
+    {
+        moveInput = inVal.Get<Vector2>();
+
+        if(inVal.Get<Vector2>() == Vector2.zero)
+        {
+            anim.SetBool("stoodStill", true);
+        }
+        else
+        {
+            anim.SetBool("stoodStill", false);
+        }
+
+    }
+
+    private void OnDash()
+    {
+        if(nextDashTimer >= timeTilNextDash && moveInput != Vector2.zero)
+        {
+            if (!dashing)
+            {
+                FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.dash, transform.position, .7f);
+
+                StartCoroutine(Dash(moveInput));
+
+                nextDashTimer = 0f;
+            }
+        }
+    }
+
+    //-----------------------------------------------
+
     void DashInputs()   
     {
-        //increment timer 
-        nextDashTimer += Time.deltaTime;
+
         //only can dash if timer has reached the right time
         if(nextDashTimer >= timeTilNextDash)
         {
@@ -160,7 +196,7 @@ public class PlayerController : MonoBehaviour
             Vector2 moveVel = moveVector.normalized;
             rb.velocity = moveVel * moveSpeed;
 
-            if(hVel + vVel != 0)
+            if (hVel + vVel != 0)
             {
                 nextStep += Time.deltaTime;
                 if (nextStep >= stepTime)
@@ -169,6 +205,20 @@ public class PlayerController : MonoBehaviour
                     nextStep = 0f;
                 }
             }
+
+
+            //New Input
+            /*rb.velocity = moveInput * moveSpeed;
+
+            if(moveInput != Vector2.zero)
+            {
+                nextStep += Time.deltaTime;
+                if (nextStep >= stepTime)
+                {
+                    FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.walk, transform.position, 1f);
+                    nextStep = 0f;
+                }
+            }*/
             
         }
         

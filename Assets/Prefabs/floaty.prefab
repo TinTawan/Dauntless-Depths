@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d57c042001fa2843977838a57d1ad1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 6.25
   health: 50
   coinPrefab: {fileID: 8577633011850663574, guid: 6440e1605311eff4c8635779a0660520, type: 3}
   attackRange: 10

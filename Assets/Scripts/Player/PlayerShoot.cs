@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -54,6 +55,12 @@ public class PlayerShoot : MonoBehaviour
         }
 
         
+    }
+
+    //New Inputs
+    void OnFire()
+    {
+
     }
 
     void ShootBullet()
