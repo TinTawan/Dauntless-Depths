@@ -23,13 +23,13 @@ public class CamFollow : MonoBehaviour
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = GetComponent<PlayerInput>();
     }
 
 
     private void Update()
     {
-        if (Input.GetKey(camChangeKey))
+        if (Input.GetKey(camChangeKey) || aimIn)
         {
             LookCam();
         }
@@ -40,7 +40,7 @@ public class CamFollow : MonoBehaviour
         }
 
 
-        var aim = playerInput.actions["Aim"];
+        var aim = GetComponent<PlayerInput>().actions["Aim"];
         if (aim.IsPressed())
         {
             aimIn = true;

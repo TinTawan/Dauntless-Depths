@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         vVel = Input.GetAxisRaw("Vertical");
 
         //set animator values for paramaters to these inputs
-        anim.SetFloat("xVel", Mathf.Abs(hVel)); //absolute value as I use a flip to swap direction
+        anim.SetFloat("xVel", hVel); //absolute value as I use a flip to swap direction
         anim.SetFloat("yVel", vVel);
         //used a blend tree
 
@@ -72,14 +72,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (rb.velocity.x > 0.1 && faceRight)
-        {
-            FlipPlayer();
-        }
-        else if (rb.velocity.x < -0.1 && !faceRight)
-        {
-            FlipPlayer();
-        }
     }
 
     //------------NEW INPUT SYSTEM-------------------

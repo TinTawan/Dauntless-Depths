@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Pointer : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] Transform player, cursorPos;
     [SerializeField] GameObject cursor;
 
     private Transform pivot;
@@ -50,7 +50,8 @@ public class Pointer : MonoBehaviour
             MovePointer();
 
             aim = playerControls.Player.Look.ReadValue<Vector2>();
-            
+
+            cursor.transform.position = cursorPos.position;
         }
 
 
@@ -80,9 +81,8 @@ public class Pointer : MonoBehaviour
             //rotate pointer with given angle on the z axis
             transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-            Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 cursorPosOffset = new Vector3(0, 0, 10);
-            cursor.transform.position = cursorPos + cursorPosOffset;
+
+            
         }
         else
         {
