@@ -13,5 +13,9 @@ public class ButtonSelect : MonoBehaviour
         firstButton.Select();   
     }
 
+    private void OnEnable()
+    {
+        firstButton.Select();
+    }
 
 }

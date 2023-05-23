@@ -249,5 +249,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpText: {fileID: 5835487264919756793, guid: be248d8669325554ab1764e41c52ddcd, type: 3}
   coinVal: 10
-  magnestiseSpeed: 8
+  magnestiseSpeed: 12
   distToPlayer: 0

@@ -402,7 +402,6 @@ public class CanvasManager : MonoBehaviour
         {
             //option1 = true;
 
-            Debug.Log("1");
 
             Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(0), player.transform.position, Quaternion.identity);
         }
@@ -416,7 +415,6 @@ public class CanvasManager : MonoBehaviour
         {
             option2 = true;
 
-            Debug.Log("2");
         }
        
     }
@@ -427,14 +425,13 @@ public class CanvasManager : MonoBehaviour
         {
             option3 = true;
 
-            Debug.Log("3");
         }
         
     }
 
 
 
-    void Upgrades()
+    /*void Upgrades()
     {
         if (upgradeMenu.activeInHierarchy)
         {
@@ -469,7 +466,7 @@ public class CanvasManager : MonoBehaviour
             option2 = false;
             option3 = false;
         }
-    }
+    }*/
 
     //-------------------------------------------------------------
 }
