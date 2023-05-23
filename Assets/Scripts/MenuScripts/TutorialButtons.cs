@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutorialButtons : MonoBehaviour
 {
@@ -49,6 +50,20 @@ public class TutorialButtons : MonoBehaviour
         {
             buttons[1].SetActive(true);
         }
+
+        if (gameObject.activeInHierarchy)
+        {
+            if (Gamepad.current.leftShoulder.wasPressedThisFrame)
+            {
+                LeftButton();
+            }
+            if (Gamepad.current.rightShoulder.wasPressedThisFrame)
+            {
+                RightButton();
+            }
+
+        }
+        
     }
 
     public void LeftButton()
@@ -75,5 +90,8 @@ public class TutorialButtons : MonoBehaviour
         }
 
         FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.buttonPress, transform.position, 1f);
+
     }
+
+    
 }
