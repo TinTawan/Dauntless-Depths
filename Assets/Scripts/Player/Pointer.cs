@@ -41,7 +41,7 @@ public class Pointer : MonoBehaviour
        
         InputSystem.onActionChange += InputActionChangeCallback;
 
-        transform.position = Vector3.zero;
+        transform.position = player.position;
     }
 
     private void Update()
@@ -76,7 +76,7 @@ public class Pointer : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
 
-            
+           
         }
         else
         {
@@ -91,10 +91,9 @@ public class Pointer : MonoBehaviour
 
                 }
             }
+
         }
 
-
-        
     }
 
     //------------NEW INPUT---------------------

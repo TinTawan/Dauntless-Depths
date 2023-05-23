@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -99,9 +100,12 @@ public class CanvasManager : MonoBehaviour
 
 
             PauseCheck();
+
+            //Debug.Log(Gamepad.current.startButton.isPressed);
+
         }
 
-        
+
     }
 
     //-----------------Game State---------------------
@@ -191,7 +195,7 @@ public class CanvasManager : MonoBehaviour
     void PauseCheck()
     {
         //cant pause if upgrading 
-        if (Input.GetKeyDown(KeyCode.Escape) && !upgradeMenu.activeInHierarchy)
+        if (Gamepad.current.startButton.isPressed && !upgradeMenu.activeInHierarchy)
         {
             if (currentState == GameState.Playing)
             {
@@ -360,4 +364,26 @@ public class CanvasManager : MonoBehaviour
 
     //------------------------------------------------------------
 
+
+
+    //----------------------NEW INPUTS-----------------------------
+
+    void OnPause()
+    {
+        if (!upgradeMenu.activeInHierarchy)
+        {
+            if (currentState == GameState.Playing)
+            {
+                CheckGameState(GameState.Paused);
+            }
+            else if (currentState == GameState.Paused)
+            {
+                CheckGameState(GameState.Playing);
+            }
+        }
+
+
+    }
+
+    //-------------------------------------------------------------
 }
