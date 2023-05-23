@@ -101,7 +101,6 @@ public class CanvasManager : MonoBehaviour
 
             PauseCheck();
 
-            //Debug.Log(Gamepad.current.startButton.isPressed);
 
         }
 
@@ -195,7 +194,7 @@ public class CanvasManager : MonoBehaviour
     void PauseCheck()
     {
         //cant pause if upgrading 
-        if (Gamepad.current.startButton.isPressed && !upgradeMenu.activeInHierarchy)
+        if ((Gamepad.current.startButton.isPressed || Keyboard.current.escapeKey.isPressed) && !upgradeMenu.activeInHierarchy)
         {
             if (currentState == GameState.Playing)
             {
@@ -368,7 +367,7 @@ public class CanvasManager : MonoBehaviour
 
     //----------------------NEW INPUTS-----------------------------
 
-    void OnPause()
+    /*void OnPause()
     {
         if (!upgradeMenu.activeInHierarchy)
         {
@@ -383,7 +382,7 @@ public class CanvasManager : MonoBehaviour
         }
 
 
-    }
+    }*/
 
     //-------------------------------------------------------------
 }
