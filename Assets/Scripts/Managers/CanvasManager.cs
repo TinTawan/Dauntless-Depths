@@ -17,7 +17,7 @@ public class CanvasManager : MonoBehaviour
 
     [Header("Game UI Items")]
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private TextMeshProUGUI keyText, killsText, endKeyText;
+    [SerializeField] private TextMeshProUGUI keyText, killsText, endKeyText, healthText;
     [SerializeField] private Slider dashTimerSlider, bombTimeSlider, healthBarSlider, magnetTimeSlider, coinSlider;
     [SerializeField] private Image lockedBomb, bombFillSlider, bombImage, magnetImage;
     [SerializeField] private GameObject magnetSection;
@@ -231,6 +231,8 @@ public class CanvasManager : MonoBehaviour
     private void DisplayHealth()
     {
         healthBarSlider.value = Manager.health;
+
+        healthText.text = Manager.health.ToString();
     }
 
     void DisplayDashTimer()
