@@ -29,6 +29,11 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject deadMenu;
 
 
+
+    //New Inputs
+    bool option1, option2, option3;
+
+
     public enum GameState
     {
         Playing,
@@ -102,6 +107,7 @@ public class CanvasManager : MonoBehaviour
             PauseCheck();
 
 
+            //Upgrades();
         }
 
 
@@ -332,23 +338,23 @@ public class CanvasManager : MonoBehaviour
         //instantiate chosen upgrade
 
         //check which of the upgrades was chosen
-        if(EventSystem.current.currentSelectedGameObject.name == "option1")
+        if(EventSystem.current.currentSelectedGameObject.name == "option1" || option1)
         {
-
             Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(0), player.transform.position, Quaternion.identity);
 
+            option1 = false;
         }
-        else if(EventSystem.current.currentSelectedGameObject.name == "option2")
+        if(EventSystem.current.currentSelectedGameObject.name == "option2" || option2)
         {
-
             Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(1), player.transform.position, Quaternion.identity);
 
+            option2 = false;
         }
-        else if(EventSystem.current.currentSelectedGameObject.name == "option3")
+        if(EventSystem.current.currentSelectedGameObject.name == "option3" || option3)
         {
-            
             Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(2), player.transform.position, Quaternion.identity);
 
+            option3 = false;
         }
 
         Manager.coinsToUpgrade += 10;
@@ -356,6 +362,10 @@ public class CanvasManager : MonoBehaviour
         FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.buttonPress, transform.position, 1f);
 
         CheckGameState(GameState.Playing);
+
+        
+        
+        
     }
 
 
@@ -383,6 +393,81 @@ public class CanvasManager : MonoBehaviour
 
 
     }*/
+
+    void OnOption1()
+    {
+        if (upgradeMenu.activeInHierarchy)
+        {
+            //option1 = true;
+
+            Debug.Log("1");
+
+            Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(0), player.transform.position, Quaternion.identity);
+        }
+        
+
+    }
+
+    void OnOption2()
+    {
+        if (upgradeMenu.activeInHierarchy)
+        {
+            option2 = true;
+
+            Debug.Log("2");
+        }
+       
+    }
+
+    void OnOption3()
+    {
+        if (upgradeMenu.activeInHierarchy)
+        {
+            option3 = true;
+
+            Debug.Log("3");
+        }
+        
+    }
+
+
+
+    void Upgrades()
+    {
+        if (upgradeMenu.activeInHierarchy)
+        {
+            if (option1)
+            {
+                Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(0), player.transform.position, Quaternion.identity);
+
+                option1 = false;
+            }
+            if (option2)
+            {
+                Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(1), player.transform.position, Quaternion.identity);
+
+                option2 = false;
+            }
+            if (option3)
+            {
+                Instantiate(upgradeMenu.GetComponent<UpgradeManager>().ReturnUpgradeArray(2), player.transform.position, Quaternion.identity);
+
+                option3 = false;
+            }
+
+            Manager.coinsToUpgrade += 10;
+
+            FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.buttonPress, transform.position, 1f);
+
+            CheckGameState(GameState.Playing);
+        }
+        else
+        {
+            option1 = false;
+            option2 = false;
+            option3 = false;
+        }
+    }
 
     //-------------------------------------------------------------
 }

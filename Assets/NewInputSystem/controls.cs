@@ -385,6 +385,33 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Option1"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4063723-87ef-4369-8f68-94813e0abd02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Option2"",
+                    ""type"": ""Button"",
+                    ""id"": ""24d5b80c-3e45-49a7-bc80-66eae37f6146"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Option3"",
+                    ""type"": ""Button"",
+                    ""id"": ""af3f921b-0525-445f-89ef-8b3f3ff59673"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -618,6 +645,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d311a3a-704b-4423-8847-5f461a51fbf1"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Option1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9fb80ce-5c16-4188-9b43-a01c3751f6bf"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Option2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25010817-def6-412f-988e-946f1d0bcfac"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Option3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -706,6 +766,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_Option1 = m_UI.FindAction("Option1", throwIfNotFound: true);
+        m_UI_Option2 = m_UI.FindAction("Option2", throwIfNotFound: true);
+        m_UI_Option3 = m_UI.FindAction("Option3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -856,6 +919,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_Option1;
+    private readonly InputAction m_UI_Option2;
+    private readonly InputAction m_UI_Option3;
     public struct UIActions
     {
         private @Controls m_Wrapper;
@@ -870,6 +936,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @Option1 => m_Wrapper.m_UI_Option1;
+        public InputAction @Option2 => m_Wrapper.m_UI_Option2;
+        public InputAction @Option3 => m_Wrapper.m_UI_Option3;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -909,6 +978,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @Option1.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOption1;
+                @Option1.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOption1;
+                @Option1.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOption1;
+                @Option2.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOption2;
+                @Option2.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOption2;
+                @Option2.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOption2;
+                @Option3.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOption3;
+                @Option3.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOption3;
+                @Option3.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOption3;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -943,6 +1021,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Option1.started += instance.OnOption1;
+                @Option1.performed += instance.OnOption1;
+                @Option1.canceled += instance.OnOption1;
+                @Option2.started += instance.OnOption2;
+                @Option2.performed += instance.OnOption2;
+                @Option2.canceled += instance.OnOption2;
+                @Option3.started += instance.OnOption3;
+                @Option3.performed += instance.OnOption3;
+                @Option3.canceled += instance.OnOption3;
             }
         }
     }
@@ -1014,5 +1101,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnOption1(InputAction.CallbackContext context);
+        void OnOption2(InputAction.CallbackContext context);
+        void OnOption3(InputAction.CallbackContext context);
     }
 }
