@@ -43,6 +43,16 @@ public class CamFollow : MonoBehaviour
         {
             aimIn = false;
         }
+
+
+        if (Input.GetKey(KeyCode.LeftBracket))
+        {
+            GetComponent<AudioSource>().mute = false;
+        }
+        if (Input.GetKey(KeyCode.RightBracket))
+        {
+            GetComponent<AudioSource>().mute = true;
+        }
     }
 
     void MoveCam()
