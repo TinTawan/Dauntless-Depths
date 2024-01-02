@@ -116,7 +116,11 @@ public class PlayerController : MonoBehaviour
             //if not dashing and press dash button
             if (!dashing && Input.GetKeyDown(dashButton))
             {
-                FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.dash, transform.position, .7f);
+                if(Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0)
+                {
+                    FindObjectOfType<SoundManager>().PlaySound(SoundManager.soundType.dash, transform.position, .7f);
+
+                }
                 //dash in direction that player is moving
                 //reset timer
 

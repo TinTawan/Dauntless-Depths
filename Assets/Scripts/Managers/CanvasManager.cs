@@ -200,15 +200,32 @@ public class CanvasManager : MonoBehaviour
     void PauseCheck()
     {
         //cant pause if upgrading 
-        if ((Gamepad.current.startButton.isPressed || Keyboard.current.escapeKey.isPressed) && !upgradeMenu.activeInHierarchy)
+        if (Gamepad.current != null)
         {
-            if (currentState == GameState.Playing)
+            if (Gamepad.current.startButton.isPressed && !upgradeMenu.activeInHierarchy)
             {
-                CheckGameState(GameState.Paused);
+                if (currentState == GameState.Playing)
+                {
+                    CheckGameState(GameState.Paused);
+                }
+                else if (currentState == GameState.Paused)
+                {
+                    CheckGameState(GameState.Playing);
+                }
             }
-            else if (currentState == GameState.Paused)
+        }
+        else
+        {
+            if (Keyboard.current.escapeKey.isPressed && !upgradeMenu.activeInHierarchy)
             {
-                CheckGameState(GameState.Playing);
+                if (currentState == GameState.Playing)
+                {
+                    CheckGameState(GameState.Paused);
+                }
+                else if (currentState == GameState.Paused)
+                {
+                    CheckGameState(GameState.Playing);
+                }
             }
         }
     }
